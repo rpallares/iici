@@ -1,0 +1,63 @@
+/***********************************************************************
+File: VPM-videofx-FS.cg
+
+Rendu Graphique Avancé RGA
+Master Professionnel d'informatique
+Christian Jacquemin, Université Paris 11
+
+Copyright (C) 2004 University Paris 11 
+This file is provided without support, instruction, or implied
+warranty of any kind.  University Paris 11 makes no guarantee of its
+fitness for a particular purpose and is not liable under any
+circumstances for any damages or loss whatsoever arising from the use
+or inability to use this file or items derived from it.
+*************************************************************************/
+
+// Main shader.
+
+
+float4 dilatationnxn (int n, float2 decalCoords, uniform samplerRECT decal) {
+  int parcours = (int)n/2.0;
+  float maxi = -0.1;
+  
+  for(int i=-parcours; i<parcours+1; i++) {
+    for(int j=-parcours; j<parcours+1; j++) {
+      maxi = max(maxi, texRECT(decal, decalCoords + float2(i,j)).x);
+    }
+  }
+  return float4(maxi, maxi, maxi, 1);
+}
+float4 erosionnxn (int n, float2 decalCoords, uniform samplerRECT decal) {
+  int parcours = (int)n/2.0;
+  float mini = 1.1;
+  
+  for(int i=-parcours; i<parcours+1; i++) {
+    for(int j=-parcours; j<parcours+1; j++) {
+      mini = min(mini, texRECT(decal, decalCoords + float2(i,j)).x);
+    }
+  }
+  return float4(mini, mini, mini, 1);
+}
+
+float4 main(
+           // obtained from Vertex Program
+           in float2 decalCoords    : TEXCOORD0,  // coord text
+           in float4 HPosition      : POSITION,
+	   in float3 normal         : NORMAL,
+	   in float3 lumiereDir     : LUMIERE,
+          // passed by the C program
+           uniform float   image_size_x,                        // image size
+           uniform float   image_size_y,                        // image size
+           uniform samplerRECT   decal,           // Image de reference
+           uniform samplerRECT   aux,             // 2e Image de reference
+           uniform sampler2D     transfer,         // Fonction de transfert
+	   uniform bumpMap    map                  // texture des normales
+	   ) : COLOR
+{
+  //gestion du diffus
+  float diffus = max(dot(normal + texRECT(bumpMap, decalCoords), lumiereDir) , 0);
+  //récupération de l'image originale
+  float4 color = texRECT(decal, decalCoords);
+  return color * diffus;
+}
+

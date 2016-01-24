@@ -1,0 +1,32 @@
+/***********************************************************************
+File: template_shader_vpm-vp.cg
+
+Rendu Graphique Avancé RGA
+Master Professionnel d'informatique
+Christian Jacquemin, Université Paris 11
+JM Vezien LIMSI-CNRS
+
+Copyright (C) 2010 University Paris 11 
+This file is provided without support, instruction, or implied
+warranty of any kind.  University Paris 11 makes no guarantee of its
+fitness for a particular purpose and is not liable under any
+circumstances for any damages or loss whatsoever arising from the use
+or inability to use this file or items derived from it.
+*************************************************************************/
+
+void main(float4 position      : POSITION,     // espace objet
+          float2 texcoords     : TEXCOORD0,
+          uniform float4x4 ModelViewProj,      // esp objet -> esp clipping
+          uniform float4x4 ModelView,          // esp objet -> esp de l'observateur
+
+          out float4 HPosition      : POSITION,
+          out float2 decalCoords    : TEXCOORD0
+	  )
+{
+    // calcul de la position en coordonnées homogènes
+    // (dans le cube canonique: l'espace de clipping) pour le rasteriseur
+    HPosition = mul(ModelViewProj, position);
+
+    // passe les coordonnées de texture
+    decalCoords = texcoords;
+}

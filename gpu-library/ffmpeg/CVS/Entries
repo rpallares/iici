@@ -1,0 +1,23 @@
+/.cvsignore/1.7/Thu Nov 25 06:31:38 2004//
+/COPYING/1.3/Sat May 25 23:01:48 2002//
+/CREDITS/1.19/Fri Nov 26 14:13:10 2004//
+/Changelog/1.43/Sat Nov 20 23:40:22 2004//
+/Doxyfile/1.8/Thu Jul 15 15:14:13 2004//
+/INSTALL/1.2/Sat May 25 22:21:14 2002//
+/Makefile/1.77/Fri Jan 21 22:16:04 2005//
+/README/1.6/Wed Apr 16 22:43:26 2003//
+/berrno.h/1.2/Sat Jul 20 20:05:49 2002//
+/cmdutils.c/1.7/Thu Jan 20 15:31:07 2005//
+/cmdutils.h/1.5/Sat Oct 16 23:44:16 2004//
+/configure/1.159/Fri Jan 21 22:16:04 2005//
+/cws2fws.c/1.1/Sat Oct 16 11:08:49 2004//
+/cygwin_inttypes.h/1.1/Fri Aug 30 19:34:55 2002//
+/ffinstall.nsi/1.2/Mon Sep 15 22:26:45 2003//
+/ffmpeg.c/1.306/Sat Jan 22 01:48:11 2005//
+/ffplay.c/1.39/Tue Jan  4 18:21:14 2005//
+/ffserver.c/1.90/Mon Jan  3 02:42:02 2005//
+/ffserver.h/1.1/Thu Jul 25 16:15:28 2002//
+/output_example.c/1.11/Sat May 29 02:06:31 2004//
+/qt-faststart.c/1.2/Tue Jul 20 03:40:45 2004//
+/xvmc_render.h/1.1/Sat Jul 26 01:34:32 2003//
+D
